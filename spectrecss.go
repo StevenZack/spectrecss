@@ -20,3 +20,15 @@ func HandleIcons(cx *fasthttp.RequestCtx) {
 	cx.SetContentLength(len(views.Str_spectre_icons))
 	cx.WriteString(views.Str_spectre_icons)
 }
+
+func GetStr_spectre() string {
+	return views.Str_spectre
+}
+
+func GetStr_spectre_exp() string {
+	return views.Str_spectre_exp
+}
+
+func GetStr_spectre_icons() string {
+	return views.Str_spectre_icons
+}
