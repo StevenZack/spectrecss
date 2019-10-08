@@ -1,24 +1,24 @@
 package spectrecss
 
 import (
-	"github.com/StevenZack/fasthttp"
+	"net/http"
+
 	"github.com/StevenZack/spectrecss/views"
 )
 
-func HandleCss(cx *fasthttp.RequestCtx) {
-	cx.SetCssHeader()
-	cx.SetContentLength(len(views.Str_spectre))
-	cx.WriteString(views.Str_spectre)
+func handleCss(w http.ResponseWriter, r *http.Request, str string) {
+	w.Header().Set("Content-Type", "text/css")
+	w.Write([]byte(str))
 }
-func HandleExp(cx *fasthttp.RequestCtx) {
-	cx.SetCssHeader()
-	cx.SetContentLength(len(views.Str_spectre_exp))
-	cx.WriteString(views.Str_spectre_exp)
+
+func HandleCss(w http.ResponseWriter, r *http.Request) {
+	handleCss(w, r, views.Str_spectre)
 }
-func HandleIcons(cx *fasthttp.RequestCtx) {
-	cx.SetCssHeader()
-	cx.SetContentLength(len(views.Str_spectre_icons))
-	cx.WriteString(views.Str_spectre_icons)
+func HandleExp(w http.ResponseWriter, r *http.Request) {
+	handleCss(w, r, views.Str_spectre_exp)
+}
+func HandleIcons(w http.ResponseWriter, r *http.Request) {
+	handleCss(w, r, views.Str_spectre_icons)
 }
 
 func GetStr_spectre() string {
