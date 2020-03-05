@@ -2,33 +2,19 @@ package spectrecss
 
 import (
 	"net/http"
-
-	"github.com/StevenZack/spectrecss/views"
 )
 
-func handleCss(w http.ResponseWriter, r *http.Request, str string) {
+func handleCss(w http.ResponseWriter, r *http.Request, str []byte) {
 	w.Header().Set("Content-Type", "text/css")
-	w.Write([]byte(str))
+	w.Write(str)
 }
 
 func HandleCss(w http.ResponseWriter, r *http.Request) {
-	handleCss(w, r, views.Str_spectre)
+	handleCss(w, r, Bytes_SpectreMinCss)
 }
 func HandleExp(w http.ResponseWriter, r *http.Request) {
-	handleCss(w, r, views.Str_spectre_exp)
+	handleCss(w, r, Bytes_SpectreExpMinCss)
 }
 func HandleIcons(w http.ResponseWriter, r *http.Request) {
-	handleCss(w, r, views.Str_spectre_icons)
-}
-
-func GetStr_spectre() string {
-	return views.Str_spectre
-}
-
-func GetStr_spectre_exp() string {
-	return views.Str_spectre_exp
-}
-
-func GetStr_spectre_icons() string {
-	return views.Str_spectre_icons
+	handleCss(w, r, Bytes_SpectreIconsMinCss)
 }
